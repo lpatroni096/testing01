@@ -1,0 +1,8 @@
+/node_modules
+/public/storage
+/vendor
+/.idea
+/docker
+Homestead.json
+Homestead.yaml
+.env
