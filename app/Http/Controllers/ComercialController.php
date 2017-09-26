@@ -28,7 +28,14 @@ class ComercialController extends Controller
 
     public function resultados_analisis()
     {
-        return view('comercial.resultados_analisis',[]);
+        $numero = rand(0,100);
+        return view('comercial.resultados_analisis',['numero'=>$numero]);
+    }
+
+
+    public function empty()
+    {
+        return view('comercial.empty',[]);
     }
 
     

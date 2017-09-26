@@ -1,0 +1,24 @@
+.jumbotron 
+{
+    padding: 0.3em 0.4em;
+
+}
+h1 
+{
+    font-size: 2em;
+}
+
+
+p 
+{
+    font-size: 1.2em;
+    
+}
+
+.centered
+{
+    display: table !important;
+    margin: 0 auto !important;
+    margin:auto !important; 
+    display:block !important;
+}

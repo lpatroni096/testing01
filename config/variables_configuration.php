@@ -12,8 +12,8 @@ return [
 		'3'=>'3',
 		'4'=>'4',
 		'5'=>'5',
-		'6'=>'7',
-		'7'=>'7',
+		'6'=>'6',
+		'7'=>'Más de 6',
 	],
 
 	'rango_edad'=>[
@@ -133,8 +133,17 @@ return [
 
  	'grado_estudios'=>[
 
- 	 	''=>'Grado de Estudio',
- 	],
+		''=>'Grado de Estudio',
+		'0'=>'Primaria',
+		'1'=>'Primaria Completa',
+		'2'=>'Secundaria',
+		'3'=>'Secundaria Completa',
+		'4'=>'Superior',
+		'5'=>'Bachiller',
+		'6'=>'Titulado',
+		'7'=>'Magister',
+		'8'=>'Doctor',
+	],
 
  	'distritos'=>[
 

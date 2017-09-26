@@ -15,7 +15,7 @@
 
             <div class="jumbotron">
                 
-                <h4>Datos del Potencial Asegurado</h4>
+                <h4 style="text-align: center;" >Datos del Potencial Asegurado</h4>
 
                 <div class="form-group">
 
@@ -81,7 +81,7 @@
         
             <div class="jumbotron">
                 
-                <h4>Datos del Potencial Asegurado</h4>
+                <h4 style="text-align: center;" >Datos del Potencial Asegurado</h4>
 
                 <div class="form-group">
 
@@ -113,73 +113,33 @@
 
                 <div class="form-group">
 
-                    <h4 style="text-align: center;color:green;">Rentable</h4>
+                    @if($numero>=50)
+
+                        <h3 style="text-align: center;color:green;">Rentable</h3>
+
+                        <br>
+
+                        <h4 style="text-align: center;">Rentabilidad estimado: {{$numero}}% <span style='font-size: 25px;color:green;' class="glyphicon glyphicon-ok"></span> </h4> 
+
+                    @else
+
+                        <h3 style="text-align: center;color:red;">No Rentable</h3>
+
+                        <br>
+
+                        <h4 style="text-align: center;">Rentabilidad estimado: {{$numero}}% <span style='font-size: 25px;color:red;' class="glyphicon glyphicon-remove"></span> </h4> 
+
+                    @endif
 
                     <br>
 
-                    <h5 style="text-align: center;">Rentabilidad estimado: x% </h5>
+                    {{ Form::button('Imprimir', array('class' => 'btn btn-success centered','onclick'=>'imprimir()')) }}
+
 
                 </div>
-
-                <div class="form-group">
-
-                {{ Form::button('Imprimir', array('class' => 'btn btn-success centered','onclick'=>'imprimir()')) }}
-                    
-                </div>
-
-
-
-           
-
-
         </div>
         
-
     </div>
-
-<script type="text/javascript">
-
-
-
-
-function imprimir()
-{
-               $.notify({
-                // options
-                message: 'Analisis se esta imprimiendo' 
-            },{
-                // settings
-                type: 'success',
-                    placement: {
-                    from: "bot",
-                    align: "right"
-                },
-            });
-}
-
-</script>
-
-<style type="text/css">
-    
-    .jumbotron {
-    padding: 0.5em 0.6em;
-    h1 {
-        font-size: 2em;
-    }
-    p {
-        font-size: 1.2em;
-        .btn {
-            padding: 0.5em;
-        }
-    }
-}
-.centered{
-
-display: table !important;
-   margin: 0 auto !important;
-   margin:auto !important; display:block !important;
-}
-</style>
 
 @endsection
 

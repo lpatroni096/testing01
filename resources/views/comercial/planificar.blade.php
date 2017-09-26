@@ -6,12 +6,14 @@
 @section('body')
 
     <div class="row">
-        
+
+    <h2 style="text-align: center;color:green;" >Planificar Campaña</h2><br>
+    
         <div class="col-md-4">
 
             <div class="jumbotron">
                 
-                <h4>Socio</h4>
+                <h4 style="text-align: center;" >Socio</h4>
 
                 <div class="form-group">
                     
@@ -31,7 +33,7 @@
             <div class="jumbotron">
                     
                 
-                <h4>Seguro</h4>
+                <h4 style="text-align: center;" >Seguro</h4>
     
                 <div class="form-group">
                         
@@ -62,8 +64,6 @@
         </div>
         
         <div class="col-md-4">
-
-            <h2>Planificar Campaña</h2>
         
             <div class="form-group">
                         
@@ -78,32 +78,12 @@
             </div>
     
             <div class="form-group">
+
+                <br>
                         
                 {{ Form::select('fondo', config('variables_configuration.fondo'), null, ['class'=>'form-control']) }}
                     
             </div>
-
-            <br><br><br><br>
-
-            <div class="form-group">
-                        
-                {{ Form::button('Iniciar analisis', array('class' => 'btn btn-primary centered','onclick'=>'muestra_resultado()')) }}
-                    
-            </div>
-            <div class="form-group">
-                        
-                {{ Form::button('Detener Analisis', array('class' => 'btn btn-danger centered')) }}
-                    
-            </div>
-            <div class="form-group">
-
-                <br>
-                        
-                {{ Form::button('Imprimir', array('class' => 'btn btn-success centered','onclick'=>'imprimir()')) }}
-                    
-            </div>
- 
-
 
         </div>
         
@@ -111,7 +91,7 @@
 
             <div class="jumbotron">
                 
-                <h4>Datos del Potencial Asegurado</h4>
+                <h4 style="text-align: center;">Potencial Asegurado</h4>
 
                 <div class="form-group">
                     
@@ -153,6 +133,23 @@
         
     </div>
 
+    <div class="form-group">
+                        
+                {{ Form::button('Iniciar analisis', array('class' => 'btn btn-primary centered','onclick'=>'muestra_resultado()')) }}
+                    
+            </div>
+            <div class="form-group">
+                        
+                {{ Form::button('Detener Analisis', array('class' => 'btn btn-danger centered')) }}
+                    
+            </div>
+            <div class="form-group">
+
+                <br>
+                        
+                {{ Form::button('Imprimir', array('class' => 'btn btn-success centered','onclick'=>'imprimir()')) }}
+                    
+        </div>
 
 <script type="text/javascript">
 
@@ -161,68 +158,12 @@ $( function() {
 });
 
 
-function muestra_resultado()
-{
-    bootbox.confirm({
-    title: "Resultado de analisis",
-    message: '<span style="width: 100%;text-align: center" class="glyphicon  glyphicon-signal"></span><br><h3 style="text-align: center;color:green;"  >Rentable</h3> <br> <h5 style="text-align: center;">Rentabilidad Esperada : x %</h5>',
-    buttons: {
-        confirm: {
-            label: 'Imprimir',
-            className: 'btn-success'
-        },
-        cancel: {
-            label: 'Regresar',
-            className: 'btn-danger'
-        }
-    },
-    callback: function (result) {
-        if(result)
-        {
-            imprimir();
-        }
-    }
-    });
-}
 
-function imprimir()
-{
-               $.notify({
-                // options
-                message: 'Analisis se esta imprimiendo' 
-            },{
-                // settings
-                type: 'success',
-                    placement: {
-                    from: "bot",
-                    align: "right"
-                },
-            });
-}
+
 
 </script>
 
-<style type="text/css">
-    
-    .jumbotron {
-    padding: 0.5em 0.6em;
-    h1 {
-        font-size: 2em;
-    }
-    p {
-        font-size: 1.2em;
-        .btn {
-            padding: 0.5em;
-        }
-    }
-}
-.centered{
 
-display: table !important;
-   margin: 0 auto !important;
-   margin:auto !important; display:block !important;
-}
-</style>
 
 @endsection
 
