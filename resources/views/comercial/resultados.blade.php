@@ -5,7 +5,7 @@
 
 @section('body')
 
-<link rel="stylesheet" href="http://www.chartjs.org/samples/latest/style.css">
+<link rel="stylesheet" href="{{URL::asset('css/style.css')}}">
 
 
 <h2 style="text-align: center;color:green;" >Analizar Resultados Comerciales de Campañas</h2>

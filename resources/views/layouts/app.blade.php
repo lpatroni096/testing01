@@ -8,26 +8,23 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>Proyecto</title>
 
     <!-- Styles -->
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-
-<link rel="stylesheet" href="{{URL::asset('css/estilo.css')}}">
+    <link rel="stylesheet" href="{{URL::asset('css/jquery-ui.min.css')}}">
+    <link rel="stylesheet" href="{{URL::asset('css/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{URL::asset('css/estilo.css')}}">
 
 
        <!-- Scripts -->
-    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/4.4.0/bootbox.js"></script>
-    <script src="http://bootstrap-notify.remabledesigns.com/js/bootstrap-notify.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.0/Chart.bundle.min.js"></script>
+    <script src="{{URL::asset('js/jquery-1.12.4.js')}}"></script>
+    <script src="{{URL::asset('js/jquery-ui.js')}}"></script>
+    <script src="{{URL::asset('js/bootstrap.min.js')}}"></script>
+    <script src="{{URL::asset('js/bootbox.js')}}"></script>
+    <script src="{{URL::asset('js/bootstrap-notify.min.js')}}"></script>
+    <script src="{{URL::asset('js/Chart.bundle.min.js')}}"></script>
     <script type="text/javascript" src="{{URL::asset('js/funciones.js')}}"></script>
-    <script src="http://www.chartjs.org/samples/latest/utils.js"></script>
-
+    <script src="{{URL::asset('js/utils.js')}}"></script>
     
 </head>
 <body>
@@ -46,7 +43,7 @@
 
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ url('/') }}">
-                        {{ config('app.name', 'Laravel') }}
+                        Proyecto
                     </a>
                 </div>
 
