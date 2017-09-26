@@ -5,8 +5,6 @@
 
 @section('body')
 
-<div class="container-fluid">
-
 <h2 style="text-align: center;color:green;" >Analizar Resultados Comerciales de Campañas</h2>
 
 <br>
@@ -47,7 +45,7 @@
         <div class="col-md-6">
 
             
-			<canvas id="myChart" width="200" height="200"></canvas>
+			<canvas id="myChart2" width="200" height="200"></canvas>
 
 
         </div>
@@ -55,7 +53,6 @@
 
     </div>
 
-</div>
 
 <script type="text/javascript">
 

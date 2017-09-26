@@ -115,7 +115,12 @@
             </div>
         </nav>
 
+        <div class="container">
+
         @yield('body')
+
+        </div>
+
     </div>
 
 

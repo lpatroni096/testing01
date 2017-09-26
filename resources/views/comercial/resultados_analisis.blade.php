@@ -5,8 +5,6 @@
 
 @section('body')
 
-<div class="container-fluid">
-
 <h2 style="text-align: center;color:green;">Planificar Campaña</h2>
 
     <br>
@@ -138,8 +136,6 @@
         
 
     </div>
-
-</div>
 
 <script type="text/javascript">
 
