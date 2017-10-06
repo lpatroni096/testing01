@@ -14,7 +14,8 @@
     <link rel="stylesheet" href="{{URL::asset('css/jquery-ui.min.css')}}">
     <link rel="stylesheet" href="{{URL::asset('css/bootstrap.min.css')}}">
     <link rel="stylesheet" href="{{URL::asset('css/estilo.css')}}">
-
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
+    
 
        <!-- Scripts -->
     <script src="{{URL::asset('js/jquery-1.12.4.js')}}"></script>
@@ -25,6 +26,8 @@
     <script src="{{URL::asset('js/Chart.bundle.min.js')}}"></script>
     <script type="text/javascript" src="{{URL::asset('js/funciones.js')}}"></script>
     <script src="{{URL::asset('js/utils.js')}}"></script>
+    <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+    
     
 </head>
 <body>
