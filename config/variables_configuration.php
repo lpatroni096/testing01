@@ -153,5 +153,12 @@ return [
  	'fondo'=>[
 
 		''=>'Fondo de Marketing',
- 	],
+	 ],
+	 
+	'si_no'=>[
+		
+		''=>'Si / No',
+		'1'=>'Si',
+		'2'=>'No'
+	],
 ];

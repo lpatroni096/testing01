@@ -3,19 +3,71 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Reclamo;
+use App\Siniestro;
+use App\Filtro_Reclamo;
+use Symfony\Component\Process\Process;
+use Symfony\Component\Process\Exception\ProcessFailedException;
 
 class ReclamoController extends Controller
 {
 
     public function search()
     {
-        return view('reclamo.search',[]);
+        $siniestros = Siniestro::lista();
+
+        return view('reclamo.search',['siniestros'=>$siniestros]);
+    }
+
+    public function buscar(Request $request)
+    {
+        $reclamos = Filtro_Reclamo::filtro($request)->with('siniestro','asegurado','estado','estado_ev')->get();
+
+        $array_datos_ordenados = [];
+
+        foreach($reclamos as $reclamo)
+        {
+            //ordena los valores con llaves requeridas para el datatables
+            $array_datos_ordenados [] = [
+
+                "siniestro" => isset($reclamo->siniestro)? $reclamo->siniestro->descripcion : '',
+                "importe" => $reclamo->monto ,
+                "nombre" => $reclamo->asegurado->nombres ,
+                "documento" => isset($reclamo->asegurado)? $reclamo->asegurado->documento : '',
+                "estado_ev" =>isset($reclamo->estado_ev)? $reclamo->estado_ev->descripcion : '',
+                "estado" =>isset($reclamo->estado)? $reclamo->estado->descripcion : '',
+
+            ];
+        }
+
+        return response()->json(array('data'=>$array_datos_ordenados));
     }
 
 
     public function analizar()
     {
-        return view('reclamo.analizar',[]);
+        $siniestros = Siniestro::lista();
+        
+        return view('reclamo.analizar',['siniestros'=>$siniestros]);
+    }
+
+
+    public function analisis_python()
+    {
+        //http://symfony.com/doc/current/components/process.html
+        //Aqui va el proceso
+        $process = new Process('echo "asdasd"');
+
+        $process->run();
+        
+        // executes after the command finishes
+        if (!$process->isSuccessful())
+        {
+            echo 'Error.';
+        }
+        
+        echo $process->getOutput();
+
     }
     
     /**

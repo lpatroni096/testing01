@@ -20,7 +20,10 @@ Route::get('/resultados/analisis/campanas', 'ComercialController@resultados_anal
 
 
 Route::get('/analizar/siniestro', 'ReclamoController@analizar');
-Route::get('/buscar/siniestro', 'ReclamoController@buscar');
+Route::get('/buscar/siniestro', 'ReclamoController@search');
+Route::post('/buscar/siniestro/resultado', 'ReclamoController@buscar');
+Route::get('/analisis/python', 'ReclamoController@analisis_python');
+
 
 Route::get('/consultar/trama', 'ComercialController@empty');
 Route::get('/enviar/trama', 'ComercialController@empty');

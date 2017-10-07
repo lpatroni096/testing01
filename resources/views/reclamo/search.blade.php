@@ -5,12 +5,9 @@
 
 @section('body')
 
-</div>
-<div class="container-fluid" > 
+{{ Form::open(['method'=>'POST','enctype'=>'multipart/form-data','id'=>'Filtro_Form']) }}
 
-{{ Form::open(['url' => '/csv_masivo','method'=>'POST','enctype'=>'multipart/form-data','id'=>'Filtro_Form']) }}
-
-<h2 style="text-align: center;color:green;" >Analizar Siniestro Reportado</h2><br>
+<h2 style="text-align: center;color:green;" >Buscar Siniestros Reportados</h2><br>
 
     <div class="jumbotron">
 
@@ -35,7 +32,7 @@
 
                     {{ Form::label('Siniestro ') }}
                             
-                    {{ Form::text('siniestro', '', array('class' => 'form-control ')) }}                    
+                    {{ Form::select('siniestro', $siniestros, null, ['class' => 'form-control','title'=>'Seleccionar Siniestro']) }}
 
                 </div>
 
@@ -82,8 +79,10 @@
     </div>
 
 </div>
+{{ Form::close() }}
 
-            <table id ="myTable" class="table table-striped table-bordered" cellspacing="0">
+
+            <table id ="tabla" class="table table-striped table-bordered" cellspacing="0">
             <thead>
                 <tr>
                     <th>Siniestro</th>
@@ -99,25 +98,33 @@
 
             
 
-
-
-
-
 <script type="text/javascript">
 
-var tabla ; 
-$( function() {
+var tabla; 
+
+$(function()
+{
     $( ".datepicker" ).datepicker();
 
-    tabla = $('#myTable').DataTable({
-      
-      "columns": [
-        { "data": "siniestro" },
-        { "data": "importe" },
-        { "data": "nombre" },
-        { "data": "documento" },
-        { "data": "estado_ev" },
-        { "data": "estado" },
+    tabla = $('#tabla').DataTable({
+
+        "deferLoading": 0, 
+        "ajax":
+            {
+                "url": "/buscar/siniestro/resultado",
+                "type": "POST",
+                "data": function ( d ) {
+                        return $('#Filtro_Form').serialize();
+                        }
+            },
+        "columns": [
+
+            { "data": "siniestro" },
+            { "data": "importe" },
+            { "data": "nombre" },
+            { "data": "documento" },
+            { "data": "estado_ev" },
+            { "data": "estado" },
         
         ]
     
@@ -125,6 +132,10 @@ $( function() {
 });
 
 
+function buscar_siniestro()
+{
+    tabla.ajax.reload();
+}
 
 
 </script>

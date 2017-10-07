@@ -68,7 +68,8 @@
                     <li class="dropdown">
                       <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Siniestros<span class="caret"></span</a>
                       <ul class="dropdown-menu">
-                        <li><a href="/analizar/siniestro">Analizar Siniestro</a></li>
+                      <li><a href="/analizar/siniestro">Analizar Siniestro</a></li>
+                      <li><a href="/buscar/siniestro">Buscar Siniestro</a></li>
                       </ul>
                       </li>
 

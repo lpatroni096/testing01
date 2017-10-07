@@ -8,7 +8,7 @@
 </div>
 <div class="container-fluid" > 
 
-{{ Form::open(['url' => '/csv_masivo','method'=>'POST','enctype'=>'multipart/form-data','id'=>'Filtro_Form']) }}
+{{ Form::open(['url' => '/analizar/reclamo','method'=>'POST','enctype'=>'multipart/form-data','id'=>'Filtro_Form']) }}
 
 <h2 style="text-align: center;color:green;" >Analizar Siniestro Reportado</h2><br>
 
@@ -16,8 +16,6 @@
 
         <h4>Datos Generales</h4>
                 
-        <div class="form-group">
-
         <div class="row">
 
             <div class="col-sm-6">
@@ -35,18 +33,10 @@
 
                     {{ Form::label('Siniestro ') }}
                             
-                    {{ Form::text('siniestro', '', array('class' => 'form-control ')) }}                    
-
-                </div>
-
-                <div class="form-group">
-
-                    {{ Form::label('Importe Reclamado ') }}
-                            
-                    {{ Form::text('importe_reclamado', '', array('class' => 'form-control ')) }}                    
+                    {{ Form::select('siniestro', $siniestros, null, ['class' => 'form-control','title'=>'Seleccionar Siniestro']) }}
                     
                 </div>
-            
+
             </div>
 
             <div class="col-sm-6">
@@ -67,69 +57,160 @@
                     
                 </div>
 
-
-                <div class="form-group">
-
-                    <br>
-
-                    {{ Form::button("Buscar", array('class' => 'btn btn-primary btn-block','type'=>'button','onclick'=>'buscar_siniestro()')) }}                 
-                    
-                </div>
             
             </div>            
 
         </div>    
     </div>
 
-</div>
 
-            <table id ="myTable" class="table table-striped table-bordered" cellspacing="0">
-            <thead>
-                <tr>
-                    <th>Siniestro</th>
-                    <th>Importe</th>
-                    <th>Nombre</th>
-                    <th>Documento</th>
-                    <th>Estado Ev.</th>
-                    <th>Estado</th>
-                </tr>
-            </thead>
-   
-        </table>
+                
+        <div class="row jumbotron">
 
+            <div class="col-sm-6 " >
+
+                <h4>Fondos</h4>
+
+                <div class="form-group">
+
+                    {{ Form::label('Fecha apertura de cuenta ') }}
+                            
+                    {{ Form::text('fecha', '', array('class' => 'form-control datepicker')) }}                    
+
+                </div>
+
+                <div class="form-group">
+
+                    {{ Form::label('Motivo apertura de cuenta ') }}
+                            
+                    {{ Form::text('motivo', '', array('class' => 'form-control ')) }}                    
+                    
+                </div>
+
+                <div class="form-group">
+
+                    {{ Form::label('Frecuencia uso de Cuenta') }}
+                            
+                    {{ Form::text('frecuencia', '', array('class' => 'form-control ')) }}                    
+                    
+                </div>     
+
+                <div class="form-group">
+
+                    {{ Form::label('Destino de los Fondos') }}
+                            
+                    {{ Form::text('destino', '', array('class' => 'form-control ')) }}                    
+                    
+                </div>    
+
+                <div class="form-group">
+
+                    {{ Form::label('Destino de los Fondos') }}
+                            
+                    {{ Form::select('si_no', config('variables_configuration.si_no'), null, ['class' => 'form-control','title'=>'Seleccionar Siniestro']) }}
+                    
+                </div>
+
+
+                <div class="form-group">
+
+                    {{ Form::label('Destino de los Fondos') }}
+                            
+                    {{ Form::select('si_no', config('variables_configuration.si_no'), null, ['class' => 'form-control','title'=>'Seleccionar Siniestro']) }}
+                    
+                </div>                                              
+
+            </div>
+
+    
+            <div class="col-sm-6 ">
             
+                <h4>Siniestro</h4>
 
+                <div class="form-group">
 
+                    {{ Form::label('Como sucedio el robo?') }}
+                            
+                    {{ Form::text('cliente', '', array('class' => 'form-control ')) }}                    
 
+                </div>
+
+                <div class="form-group">
+
+                    {{ Form::label('Tiempo entre retiro de dinero') }}
+                            
+                    {{ Form::text('documento', '', array('class' => 'form-control ')) }}                    
+                    
+                </div>
+
+                <div class="form-group">
+
+                    {{ Form::label(' "T" entre robo y reporte de robo') }}
+                            
+                    {{ Form::text('destino', '', array('class' => 'form-control ')) }}                    
+                    
+                </div>    
+
+                <div class="form-group">
+
+                    {{ Form::label('Estuvo en/ cerca a zona peligrosa?') }}
+                            
+                    {{ Form::select('si_no', config('variables_configuration.si_no'), null, ['class' => 'form-control','title'=>'Seleccionar Siniestro']) }}
+                    
+                </div>                                              
+
+                <div class="form-group">
+
+                <br>
+
+                {{ Form::button('Analizar', array('class' => 'btn btn-success centered','type'=>'button','onclick'=>'analizar()')) }}
+
+                </div> 
+
+                <div class="form-group">
+
+                <br>
+
+                {{ Form::button('Limpiar', array('class' => 'btn btn-danger centered','type'=>'button','onclick'=>'limpiar()')) }}
+
+                </div> 
+            
+            </div>            
+
+        </div>    
+        {{ Form::close() }}
 
 
 <script type="text/javascript">
 
 var tabla ; 
 $( function() {
-    $( ".datepicker" ).datepicker();
 
-    tabla = $('#myTable').DataTable({
-      
-      "columns": [
-        { "data": "siniestro" },
-        { "data": "importe" },
-        { "data": "nombre" },
-        { "data": "documento" },
-        { "data": "estado_ev" },
-        { "data": "estado" },
-        
-        ]
-    
-    });
 });
 
+function limpiar()
+{
+    window.location.href=window.location.href;  
+}
 
-
+function analizar()
+{
+    $.get("/analisis/python", function(data, status)
+    {
+        if(status=='success')
+        {
+            //El resultado data se imprimira
+            alert(data);
+        }
+        
+    });
+}
 
 </script>
 
+<style>
 
+</style>
 @endsection
 
 
