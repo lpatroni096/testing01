@@ -185,7 +185,7 @@
 
 var tabla ; 
 $( function() {
-
+    $( ".datepicker" ).datepicker();
 });
 
 function limpiar()
@@ -199,8 +199,11 @@ function analizar()
     {
         if(status=='success')
         {
-            //El resultado data se imprimira
-            alert(data);
+            bootbox.alert({ 
+                size: "large",
+                title: "Resultados del Análisis",
+                message: data, 
+              })            
         }
         
     });

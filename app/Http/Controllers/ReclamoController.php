@@ -56,7 +56,7 @@ class ReclamoController extends Controller
     {
         //http://symfony.com/doc/current/components/process.html
         //Aqui va el proceso
-        $process = new Process('echo "asdasd"');
+        $process = new Process('python3 /home/luis/Desktop/test.py');
 
         $process->run();
         
